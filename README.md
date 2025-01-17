@@ -138,10 +138,41 @@ cd ServiceHub
 1. Use MongoDB Atlas for a managed cloud database.
 2. Update the `MONGO_URI` in the `.env` file.
 
+## Testing and Evaluation Insights
 
+After deployment, test the application by:
+
+1. Logging in with the provided credentials to verify authentication.
+2. Adding new submissions and confirming they appear in the listing page and dashboard metrics.
+3. Checking validation rules on dynamic forms for accuracy.
+4. Reviewing the dashboard to ensure visualizations update correctly with new data.
+
+For API evaluation, use tools like Postman to test endpoints as documented above.
 
 ---
 
 ## License
 This project is for educational purposes as part of a technical assignment. All rights reserved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
