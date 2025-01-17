@@ -111,12 +111,14 @@ cd ServiceHub
 - **GET /api/services**: Retrieve all available services.
 
 ### Submissions
-- **GET /api/submissions?page=1**: Retrieve submissions with pagination.
-- **POST /api/submissions**: Submit form data.
+- **GET /api/services/submissions?page=1**: Retrieve submissions with pagination.
+- **POST /api/services/submissions**: Submit form data.
 
 ### Dashboard Metrics
-- **GET /api/dashboard/metrics**: Retrieve total submissions, daily trends, and most-used services.
+- **GET /api/services/reporting/**: Retrieve total submissions, daily trends, and most-used services.
 
+### Swagger
+- http://localhost:5001/api-docs/#/
 ---
 
 ## Deployment Instructions
