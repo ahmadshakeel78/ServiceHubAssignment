@@ -1,0 +1,67 @@
+.layout {
+    display: flex;
+    height: 100vh; /* Full-height layout */
+  }
+  
+  .side-nav {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin: 10px 0;
+  
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 16px;
+          padding: 10px 15px;
+          display: block;
+          border-radius: 5px;
+          transition: background-color 0.3s;
+  
+          &:hover,
+          &.active-link {
+            background-color: #0056b3; /* Darker blue for hover and active */
+          }
+        }
+      }
+    }
+  
+    .logout-button {
+      margin-top: auto; /* Pushes the button to the bottom */
+      background-color: #dc3545; /* Red background */
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #c82333; /* Darker red on hover */
+      }
+    }
+  }
+  
+  .content {
+    flex: 1; /* Take the remaining space */
+    background-color: #f8f9fa; /* Light gray background for the main content */
+  }
+  

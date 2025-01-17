@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+  }
+  
+  .login-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .error-message {
+    color: #ff4d4f;
+    font-size: 14px;
+  }
+  
+  .btn-login {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-login:hover {
+    background-color: #0056b3;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,87 @@
+.submissions-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+  
+    .service-selection {
+      margin-bottom: 20px;
+  
+      label {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+  
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+    }
+  
+    .filter-sort {
+      margin-bottom: 20px;
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+  
+      th {
+        cursor: pointer;
+        background-color: #f8f9fa;
+      }
+  
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+  
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+  
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  

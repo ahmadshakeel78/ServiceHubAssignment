@@ -1,0 +1,66 @@
+<div class="submissions-container">
+    <h1>Submissions</h1>
+  
+    <!-- Service Selection Dropdown -->
+    <div class="service-selection">
+      <label for="service">Select a Service:</label>
+      <select id="service" (change)="onServiceChange($event)">
+        <option value="" disabled selected>Select a service</option>
+        <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
+      </select>
+    </div>
+  
+    <!-- Display Submissions Only if a Service is Selected -->
+    <div *ngIf="selectedService">
+      <h2>Submissions for {{ selectedService.name }}</h2>
+  
+      <!-- Search Bar -->
+      <div class="filter-sort">
+        <input
+          type="text"
+          placeholder="Search..."
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="filterSubmissions()"
+        />
+      </div>
+  
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let column of columns" (click)="sort(column)">
+              {{ column | titlecase }}
+              <span *ngIf="sortColumn === column">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+            <!-- <th>Actions</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let submission of paginatedSubmissions">
+            <td *ngFor="let column of columns">
+              <!-- Handle nested Data -->
+              <ng-container *ngIf="column === 'data'; else otherColumns">
+                {{ submission[column] | json }}
+              </ng-container>
+              <ng-template #otherColumns>
+                {{ submission[column] }}
+              </ng-template>
+            </td>
+            <!-- <td>
+              <button (click)="viewDetails(submission.serviceId)">View Details</button>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Pagination -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+    </div>
+  </div>
+  

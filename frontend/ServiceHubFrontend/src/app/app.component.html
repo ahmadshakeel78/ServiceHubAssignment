@@ -1,0 +1,19 @@
+<div class="layout">
+  <!-- Side Navigation -->
+  <nav class="side-nav" *ngIf="isAuthenticated">
+    <h2>Service Hub</h2>
+    <ul>
+      <li><a routerLink="/reports" routerLinkActive="active-link">Dashboard</a></li>
+      <li><a routerLink="/services" routerLinkActive="active-link">Services</a></li>
+      <li><a routerLink="/submissions" routerLinkActive="active-link">Submitted Entries</a></li>
+    </ul>
+
+    <!-- Logout Button -->
+    <button (click)="logout()" class="logout-button">Logout</button>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

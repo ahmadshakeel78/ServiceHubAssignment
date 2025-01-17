@@ -1,0 +1,26 @@
+<div class="submission-details">
+    <h1>Submission Details</h1>
+  
+    <div *ngIf="submission; else loading">
+      <table>
+        <tbody>
+          <tr *ngFor="let key of objectKeys(submission)">
+            <td><strong>{{ key | titlecase }}:</strong></td>
+            <td>
+              <ng-container *ngIf="isObject(submission[key]); else value">
+                <pre>{{ submission[key] | json }}</pre>
+              </ng-container>
+              <ng-template #value>{{ submission[key] }}</ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <ng-template #loading>
+      <p>Loading submission details...</p>
+    </ng-template>
+  
+    <button (click)="goBack()">Back to Submissions</button>
+  </div>
+  

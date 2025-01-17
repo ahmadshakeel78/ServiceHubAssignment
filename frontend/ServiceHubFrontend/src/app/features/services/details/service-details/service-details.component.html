@@ -1,0 +1,24 @@
+<div class="service-details-container">
+    <div *ngIf="service; else loading">
+      <h1>{{ service.name }}</h1>
+      <p><strong>Service ID:</strong> {{ service.id }}</p>
+  
+      <div *ngIf="service.required_fields?.length">
+        <h2>Required Fields</h2>
+        <ul class="required-fields">
+          <li *ngFor="let field of service.required_fields">
+            <strong>{{ field.label?.en }}:</strong> {{ field.type }}
+            <br />
+            <small>
+              <strong>Validation:</strong> {{ field.validation || 'None' }}
+            </small>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <p>Loading service details...</p>
+    </ng-template>
+  </div>
+  
