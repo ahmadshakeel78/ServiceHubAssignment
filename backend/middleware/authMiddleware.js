@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-// Secret key for signing tokens
-const JWT_SECRET = 'your_secret_key'; // Replace with a secure key in production
+// Load secret key from environment variables
+const JWT_SECRET = process.env.JWT_SECRET || 'default_secret_key'; // Replace 'default_secret_key' with a strong default only for development/testing
 
 /**
  * Middleware to authenticate JWT tokens
@@ -16,16 +16,19 @@ exports.authenticateJWT = (req, res, next) => {
 
   const token = authHeader.split(' ')[1]; // Extract the token from "Bearer <token>"
 
-  try {
-    // Verify the token
-    const decoded = jwt.verify(token, JWT_SECRET);
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      // Handle token verification errors
+      return res.status(403).json({
+        message: 'Invalid or expired token',
+        error: err.message, // Include error details for debugging in development (optional)
+      });
+    }
 
-    // Attach user data to the request object
+    // Attach decoded token data to the request object
     req.user = decoded;
 
-    // Call the next middleware
+    // Proceed to the next middleware or route
     next();
-  } catch (error) {
-    return res.status(403).json({ message: 'Invalid or expired token' });
-  }
+  });
 };
