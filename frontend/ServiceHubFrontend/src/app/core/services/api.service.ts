@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Service } from '../../models/service.model';
 import { Submission, SubmissionResponse } from '../../models/submission.model';
 import { DashboardMetrics } from '../../models/dashboard-metrics.model';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
     providedIn: 'root',
 })
 export class ApiService {
-    private baseUrl = 'http://localhost:5001/api';
-
+    private baseUrl = environment.apiUrl;
     constructor(private http: HttpClient) { }
 
     getServices(): Observable<Service[]> {
