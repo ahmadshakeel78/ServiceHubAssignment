@@ -1,36 +1,48 @@
 <div class="services-container">
-    <h1>Select a Service</h1>
-    <div class="service-selection">
-      <label for="service">Available Services:</label>
-      <select id="service" (change)="fetchServiceConfig($event)">
-        <option value="" disabled selected>Select a service</option>
-        <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
-      </select>
-    </div>
-  
-    <div class="dynamic-form" *ngIf="selectedService">
-      <h2>Fill in the Details for {{ selectedService.name }}</h2>
-      <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-        <div *ngFor="let field of selectedService.required_fields" class="form-group">
-          <label [for]="field.name">{{ field.label.en }}</label>
-          <input
-            *ngIf="field.type !== 'dropdown'"
-            [id]="field.name"
-            [formControlName]="field.name"
-            [type]="field.type"
-            [placeholder]="field.placeholder?.en || ''"
-            [attr.maxLength]="field.max_length || null"
-          />
-          <select *ngIf="field.type === 'dropdown'" [id]="field.name" [formControlName]="field.name">
-            <option *ngFor="let option of field.options" [value]="option.name">{{ option.label }}</option>
-          </select>
-          <div *ngIf="dynamicForm.get(field.name)?.invalid && dynamicForm.get(field.name)?.touched" class="error">
-            {{ field.validation_error_message?.en }}
-          </div>
-        </div>
-  
-        <button type="submit" class="btn-submit" [disabled]="dynamicForm.invalid">Submit</button>
-      </form>
-    </div>
+  <h1>Select a Service</h1>
+
+  <!-- Service Selection Dropdown -->
+  <div class="service-selection">
+    <label for="service">Available Services:</label>
+    <select id="service" (change)="fetchServiceConfig($event)">
+      <option value="" disabled selected>Select a service</option>
+      <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
+    </select>
   </div>
-  
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loader">Loading service configuration...</div>
+
+  <!-- Dynamic Form -->
+  <div class="dynamic-form" *ngIf="selectedService">
+    <h2>Fill in the Details for {{ selectedService.name }}</h2>
+    <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let field of selectedService.required_fields" class="form-group">
+        <label [for]="field.name">{{ field.label.en }}</label>
+
+        <!-- Input Field -->
+        <input
+          *ngIf="field.type !== 'dropdown'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          [type]="field.type"
+          [placeholder]="field.placeholder?.en || ''"
+          [attr.maxLength]="field.max_length || null"
+        />
+
+        <!-- Dropdown Field -->
+        <select *ngIf="field.type === 'dropdown'" [id]="field.name" [formControlName]="field.name">
+          <option *ngFor="let option of field.options" [value]="option.name">{{ option.label }}</option>
+        </select>
+
+        <!-- Validation Error Messages -->
+        <div *ngIf="dynamicForm.get(field.name)?.invalid && dynamicForm.get(field.name)?.touched" class="error">
+          {{ field.validation_error_message?.en }}
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button class="btn-submit"  type="submit" [disabled]="dynamicForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>
