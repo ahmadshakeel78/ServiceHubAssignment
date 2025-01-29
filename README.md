@@ -59,7 +59,7 @@ cd ServiceHub
    ```
 4. Start the backend server:
    ```bash
-   npm start
+   npx nodemon app.js
    ```
 5. The API will run at `http://localhost:5001`.
 
